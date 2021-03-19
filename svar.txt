@@ -1,0 +1,54 @@
+1. What is point of NoSQL databases? 
+	God til at arbejde med store mængder data hurtigt
+	Kan både lager struktureret, semi- og u-struktureret data
+	Nem at arbejde med for udviklere
+		Kan være nemmere at sætte op end SQL databaser
+
+2. What is the CAP theorem? 
+CAP er teori om databaseopbygning og står for:
+Consistency
+	Hver burger får den samme data fra alle kidler under alle omstændigheder, hvis en node mister forbindelsen, stopper den med at give brugere svar i stedet for at svare dem med information der måske er forkert, fordi informationen kan være ændret på en anden node.	
+Avalibility
+Hvis noder I systemet mister forbindelsen kan systemet stadig anvendes, vi acceptere fx at noget data der bliver leveret til brugere er forkert, tildængede virker vores system oftere. 
+Partition tolerance
+	Hvis et databasesystem er fordel over flere servere, kan systemet opbygges så det kan håndtere hvis forbindelsen mellem dele af systemet brydes.
+Altså går en server ned eller mister forbindelsen til resten af systemet, kan en bruger stadig få fat i indholdet i de andre serverere.
+
+Det siges at man skal vælge 2 af de 3 elementer i CAP når man bygger databasesystemer
+
+3. What are ideal use cases of HBase?
+Apache HBase bruges til læse- / skriveadgang i realtid til Big Data. Det hoster meget store tables. Det er en ikke-relationel database modelleret efter Googles Bigtable. 
+
+
+
+
+
+
+Task 2 - Bloom filters Bloom filters are used in hbase as an incredible optimization. Solve the following. 
+
+1. What is a bloom filter? 
+Et Bloom-filter er en pladseffektiv datastruktur, der bruges til at teste, om et element er med i et sæt
+
+2. What is an advantage of bloom filters over hash tables? 
+	Det fylder meget mindre end et hash table
+	Det kan også søges i meget hurtigt
+
+3. What is a disadvantage of bloom filters? 
+	Det kan give false positives 
+
+4. Using your language of choice, implement a bloom filter with add and check functions. The backing bit-array can simply be a long (64 bit integer). 
+	Se svaret I notebooken 
+
+5. If you are to store one million ASCII strings with an average size of 10 characters in a hash set, what would be the approximate space consumption?
+Hver karakter fylder 1 byte derfor 10 * 1000.000 = 1000.000.0 bytes = 8000.000.0 bits
+
+6. The following equation gives the required number of bits of space per inserted key, where E is the false positive rate. b = 1.44log2(1/E) (1) 
+
+7. How many bits per element are required for a 1% false positive rate?
+1,44*log2(1/0,01) = 9,56 bits altså ca 10 bits
+
+8. How many bits per element are required for a 5% false positive rate? 
+1,44*log2(1/0,05) = 6,22 bits altså ca 6 bits
+
+9. If you are to store one million ASCII strings with an average size of 10 characters in a bloom filter, what would be the approximate space consumption, given an allowed false positive rate of 5%?.
+6,22 * 1000.000 = 6220.000 bits
